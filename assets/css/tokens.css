@@ -1,0 +1,110 @@
+/* ============================================================
+   tokens.css — 設計 token 單一來源
+   作品集「過溪」｜自然書寫 ｜ 三篇各有主調，由 [data-essay] 切換
+   ============================================================ */
+
+@layer tokens, base, components, essay;
+
+@layer tokens {
+  :root {
+    /* —— 字體 —————————————————————————————————————————— */
+    /* 明體（襯線）為文學主角；細黑體用於圖說、頁眉、導覽 */
+    --font-serif: "Noto Serif TC", "Source Han Serif TC", "Songti TC", "PMingLiU", serif;
+    --font-sans:  "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+
+    /* —— 收藏（首頁）預設主題：土地的暖紙色 ———————————————— */
+    --paper:      #f4efe5;   /* 暖米白，乾燥土壤 */
+    --paper-2:    #ece4d6;   /* 略深一階，分區 */
+    --ink:        #2b2620;   /* 深暖墨，正文 */
+    --ink-soft:   #6f6555;   /* 圖說、meta、次要 */
+    --ink-faint:  #a99e8c;   /* 最弱：頁碼、裝飾 */
+    --accent:     #9c5a34;   /* 陶土，統合三篇的土色 */
+    --aux:        #7a8c4a;   /* 田邊草綠 */
+    --line:       rgba(43, 38, 32, 0.14);  /* 髮絲線 */
+    --line-strong:rgba(43, 38, 32, 0.30);
+    --selection:  rgba(156, 90, 52, 0.22);
+
+    /* —— 字級（流動式）———————————————————————————————— */
+    --fs-caption: 0.8rem;
+    --fs-meta:    0.875rem;
+    --fs-body:    clamp(1.0625rem, 1.01rem + 0.30vw, 1.1875rem);  /* ~17–19px */
+    --fs-lead:    clamp(1.2rem, 1.05rem + 0.7vw, 1.55rem);        /* 引言 / chapeau */
+    --fs-h3:      clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem);
+    --fs-h2:      clamp(1.7rem, 1.2rem + 1.9vw, 2.7rem);          /* 章節標題 */
+    --fs-h1:      clamp(2.4rem, 1.7rem + 3.2vw, 4.2rem);          /* 頁標題 */
+    --fs-hero:    clamp(4.5rem, 7rem + 6vw, 12rem);               /* 巨大篇名（字即圖） */
+
+    /* —— 行高 / 字距 ————————————————————————————————— */
+    --lh-body:    1.9;     /* 中文長文需要更鬆的垂直呼吸 */
+    --lh-lead:    1.7;
+    --lh-tight:   1.18;    /* 標題 */
+    --ls-body:    0.01em;
+    --ls-head:    0.06em;  /* CJK 標題的平靜字距 */
+    --ls-hero:    0.04em;
+    --ls-label:   0.22em;  /* 全大寫 / 編號標籤 */
+
+    /* —— 版面尺度 ————————————————————————————————————— */
+    --measure:     42rem;   /* 正文版心（約 30–35 中文字/行） */
+    --measure-wide:52rem;   /* 較寬欄（引言、寬圖文） */
+    --gutter:      clamp(1.25rem, 5vw, 3rem);
+    --space-para:  2rem;    /* 段落間距 */
+    --space-fig:   clamp(2.5rem, 6vw, 4.5rem);  /* 圖片上下 */
+    --space-section: clamp(5rem, 14vh, 11rem);  /* 章節間呼吸 */
+
+    /* —— 形狀 / 動態 ————————————————————————————————— */
+    --radius: 0;            /* 不用圓角卡片：散文集不是 SaaS */
+    --rev-dur: 0.6s;
+    --rev-shift: 12px;
+    --ease: cubic-bezier(0.22, 0.61, 0.22, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* 紙張顆粒疊圖透明度（base.css 使用） */
+    --grain-opacity: 0.035;
+    color-scheme: light;
+  }
+
+  /* ====== 花生｜詼諧 · 感官 · 泥土（暖陶土，淺色） ====== */
+  [data-essay="peanut"] {
+    --paper:    #f7f3ec;
+    --paper-2:  #efe7d8;
+    --ink:      #3a2a1a;
+    --ink-soft: #7d6a52;
+    --ink-faint:#b3a288;
+    --accent:   #c4622d;   /* 赤陶橙：花生殼的紅棕 */
+    --aux:      #7a8c4a;   /* 田邊草綠 */
+    --line:     rgba(58, 42, 26, 0.16);
+    --line-strong: rgba(58, 42, 26, 0.32);
+    --selection:rgba(196, 98, 45, 0.22);
+  }
+
+  /* ====== 魚｜靜觀 · 神秘 · 水的深度（深石板藍，深色） ====== */
+  [data-essay="fish"] {
+    --paper:    #1a2530;   /* 夜晚水塘 */
+    --paper-2:  #142029;
+    --ink:      #e8edf0;   /* 冷白 */
+    --ink-soft: #9fb0b8;
+    --ink-faint:#5f727d;
+    --accent:   #43a7b8;   /* 暗青（提亮一階以在深底上可讀） */
+    --aux:      #b89a60;   /* 池底沉積泥黃 */
+    --line:     rgba(232, 237, 240, 0.16);
+    --line-strong: rgba(232, 237, 240, 0.34);
+    --selection:rgba(67, 167, 184, 0.30);
+    --lh-body:  2.05;      /* 深底白字需更鬆 */
+    --grain-opacity: 0.05;
+    color-scheme: dark;
+  }
+
+  /* ====== 竹｜記憶 · 失去 · 韌性（霧感暖灰白，淺色） ====== */
+  [data-essay="bamboo"] {
+    --paper:    #f2f0eb;   /* 廢墟竹林的霧 */
+    --paper-2:  #e7e4dc;
+    --ink:      #2c2c2c;
+    --ink-soft: #6e6e69;
+    --ink-faint:#a3a39d;
+    --accent:   #4a6741;   /* 老竹青（非鮮綠） */
+    --aux:      #9a9a97;   /* 折斷竹截面的銀灰 */
+    --line:     rgba(44, 44, 44, 0.15);
+    --line-strong: rgba(44, 44, 44, 0.30);
+    --selection:rgba(74, 103, 65, 0.22);
+  }
+}

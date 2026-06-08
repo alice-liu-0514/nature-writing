@@ -1,0 +1,6 @@
+/* 自架字型（pyftsubset 子集化）— tools/fetch_fonts.py 產生，勿手改 */
+@font-face{font-family:'Noto Serif TC';font-style:normal;font-weight:400;font-display:swap;src:url('noto-serif-tc-400.woff2') format('woff2');}
+@font-face{font-family:'Noto Serif TC';font-style:normal;font-weight:700;font-display:swap;src:url('noto-serif-tc-700.woff2') format('woff2');}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:300;font-display:swap;src:url('noto-sans-tc-300.woff2') format('woff2');}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:400;font-display:swap;src:url('noto-sans-tc-400.woff2') format('woff2');}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:500;font-display:swap;src:url('noto-sans-tc-500.woff2') format('woff2');}

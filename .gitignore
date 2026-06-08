@@ -1,0 +1,25 @@
+# ── 隱私與體積契約：原始素材絕不進 repo ──────────────────
+# 來源檔名含學號，且 HEIC/MOV 瀏覽器不支援、體積龐大。
+# 只 commit assets/ 下「最佳化後」的 web 素材。
+國文課/
+*.HEIC
+*.heic
+*.MOV
+*.mov
+*.docx
+
+# 字型原始檔（只 commit subset 後的 woff2）
+assets/fonts/*-source.*
+assets/fonts/*.ttf
+assets/fonts/*.otf
+
+# 本機工具 / 暫存
+.claude/settings.local.json
+tools/_work/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

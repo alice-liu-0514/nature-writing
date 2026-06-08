@@ -1,0 +1,203 @@
+/* ============================================================
+   essay.css — 頁面級版面：首頁三篇分篇、文章頁（巨大篇名 hero、閱讀流）
+   ============================================================ */
+
+@layer essay {
+
+  /* ====================================================
+     共用：巨大篇名（字即圖）
+     ==================================================== */
+  .bigchar {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 0.78;
+    letter-spacing: var(--ls-hero);
+    color: var(--ink);
+    display: block;
+  }
+
+  /* ====================================================
+     首頁
+     ==================================================== */
+  .home-hero {
+    min-height: 86vh;
+    display: grid;
+    align-content: center;
+    padding: clamp(4rem, 14vh, 9rem) 0 clamp(3rem, 8vh, 6rem);
+    position: relative;
+  }
+  .home-hero .inner { width: 100%; max-width: var(--measure-wide); margin-inline: auto; padding-inline: var(--gutter); }
+  .home-hero .kicker {
+    font-family: var(--font-sans); font-size: var(--fs-meta);
+    letter-spacing: var(--ls-label); text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.4rem;
+  }
+  .home-hero .title {
+    font-size: clamp(5rem, 6rem + 12vw, 16rem);
+    font-weight: 700; line-height: 0.82; letter-spacing: 0.06em;
+    margin-bottom: 1.6rem;
+  }
+  .home-hero .sub {
+    font-size: var(--fs-lead); color: var(--ink-soft);
+    font-style: italic; max-width: 34rem; line-height: 1.8;
+  }
+  .home-hero .scroll-cue {
+    position: absolute; left: 50%; bottom: 2rem; transform: translateX(-50%);
+    font-family: var(--font-sans); font-size: 0.78rem; letter-spacing: 0.2em;
+    color: var(--ink-faint); writing-mode: vertical-rl;
+  }
+
+  .home-intro { padding-block: clamp(3rem, 10vh, 7rem); }
+  .home-intro .prose { max-width: var(--measure); margin-inline: auto; padding-inline: var(--gutter); }
+  .home-intro p { font-size: var(--fs-lead); line-height: 1.95; margin-bottom: 1.6rem; }
+
+  /* —— 三篇分篇 band（各自的色彩世界，全出血）———————————— */
+  .bands { display: flex; flex-direction: column; }
+  .essay-band {
+    background: var(--paper); color: var(--ink);
+    min-height: clamp(60vh, 78vh, 80vh);
+    display: grid; align-items: center;
+    padding: clamp(3.5rem, 10vh, 7rem) 0;
+    position: relative; overflow: hidden;
+    text-decoration: none;
+    transition: background-color 0.6s var(--ease);
+  }
+  .essay-band .inner {
+    width: 100%; max-width: 72rem; margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: grid; grid-template-columns: 1fr; gap: 1.4rem;
+    position: relative; z-index: 2;
+  }
+  /* 巨大篇名作為背景水印 */
+  .essay-band .ghost {
+    position: absolute; z-index: 1; pointer-events: none;
+    font-family: var(--font-serif); font-weight: 700; line-height: 0.8;
+    color: var(--accent); opacity: 0.14;
+    font-size: clamp(14rem, 40vw, 40rem);
+    right: -0.1em; bottom: -0.18em;
+    transition: opacity 0.6s var(--ease), transform 0.9s var(--ease-out);
+  }
+  .essay-band:hover .ghost { opacity: 0.2; transform: translateX(-1.5%); }
+  .essay-band .kicker {
+    font-family: var(--font-sans); font-size: var(--fs-meta);
+    letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--accent);
+  }
+  .essay-band .name {
+    font-family: var(--font-serif); font-weight: 700;
+    font-size: clamp(3.5rem, 2rem + 9vw, 7.5rem); line-height: 0.9;
+    letter-spacing: 0.08em;
+  }
+  .essay-band .theme {
+    font-family: var(--font-sans); font-size: var(--fs-meta);
+    letter-spacing: 0.14em; color: var(--ink-soft);
+  }
+  .essay-band .summary {
+    max-width: 30rem; font-size: var(--fs-body); line-height: 1.85; color: var(--ink-soft);
+  }
+  .essay-band .enter {
+    font-family: var(--font-sans); font-size: var(--fs-meta);
+    letter-spacing: 0.12em; color: var(--ink);
+    display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 0.6rem;
+  }
+  .essay-band .enter::after {
+    content: "→"; transition: transform 0.3s var(--ease); color: var(--accent);
+  }
+  .essay-band:hover .enter::after { transform: translateX(0.45rem); }
+
+  .home-about { padding-block: clamp(4rem, 12vh, 8rem); }
+  .home-about .inner { max-width: var(--measure); margin-inline: auto; padding-inline: var(--gutter); }
+  .home-about .kicker {
+    font-family: var(--font-sans); font-size: var(--fs-meta);
+    letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.4rem;
+  }
+  .home-about p { margin-bottom: 1.4rem; line-height: 1.95; }
+  .home-about .sign {
+    margin-top: 2rem; font-family: var(--font-serif); font-weight: 700;
+    font-size: var(--fs-h3); letter-spacing: 0.1em;
+  }
+
+  /* ====================================================
+     文章頁
+     ==================================================== */
+  .essay-hero {
+    padding: clamp(2.5rem, 8vh, 5rem) 0 0;
+  }
+  .essay-hero .inner { max-width: 72rem; margin-inline: auto; padding-inline: var(--gutter); }
+  .essay-hero .kicker {
+    font-family: var(--font-sans); font-size: var(--fs-meta);
+    letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.6rem;
+  }
+  .essay-hero .name {
+    font-size: var(--fs-hero); font-weight: 700; line-height: 0.8;
+    letter-spacing: 0.08em; margin-bottom: 1.8rem;
+  }
+  .essay-hero .lead {
+    font-size: var(--fs-lead); line-height: 1.8; color: var(--ink-soft);
+    font-style: italic; max-width: 36rem; margin-bottom: clamp(2.5rem, 7vh, 5rem);
+  }
+  .hero-figure { margin: 0; }
+  .hero-figure img { width: 100vw; height: clamp(50vh, 62vh, 70vh); object-fit: cover; }
+
+  .essay-article { padding-bottom: clamp(3rem, 8vh, 6rem); }
+  .essay-article .prose { max-width: var(--measure); margin-inline: auto; padding-inline: var(--gutter); }
+
+  /* —— 魚篇：三層的世界（深度視覺）—————————————————————— */
+  .depth { margin: var(--space-fig) 0; }
+  .depth-layer {
+    max-width: var(--measure); margin-inline: auto; padding: clamp(2rem, 5vw, 3.5rem) var(--gutter);
+    position: relative;
+  }
+  .depth-layer .tier {
+    font-family: var(--font-sans); font-size: var(--fs-meta);
+    letter-spacing: var(--ls-label); text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.8rem; display: block;
+  }
+  .depth-layer p { margin: 0; }
+  .depth[data-depth] { background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--paper) 100%, transparent) 0%,
+      color-mix(in srgb, #0a1219 55%, var(--paper)) 100%); }
+
+  /* 一個、且唯一一個動：水中漂移 */
+  .drifter { position: relative; }
+  .drifter::before {
+    content: ""; position: absolute; z-index: 0;
+    width: 9rem; height: 5rem; right: -1rem; top: -1rem;
+    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--accent) 28%, transparent), transparent 70%);
+    filter: blur(8px);
+    animation: drift 11s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); opacity: 0.5; }
+    to   { transform: translate(-2.5rem, 1.5rem) scale(1.15); opacity: 0.85; }
+  }
+  @media (prefers-reduced-motion: reduce) { .drifter::before { animation: none; } }
+
+  /* —— 竹篇：時間跳躍的 100vh 間隔 ——————————————————————— */
+  .time-gap { height: clamp(40vh, 60vh, 70vh); }
+
+  /* 阿公記憶：回憶的聲音（略斜 + 細線） */
+  .memory {
+    font-style: italic;
+    border-left: 2px solid var(--aux);
+    padding-left: 1.4rem; margin-left: -1.6rem;
+    color: var(--ink);
+  }
+  @media (max-width: 600px) { .memory { margin-left: 0; } }
+
+  /* 颱風褪色：滾動觸發轉灰 */
+  .destash img, figure.destash img {
+    filter: saturate(1); transition: filter 1.4s var(--ease);
+  }
+  .destash.is-grey img { filter: grayscale(85%) saturate(0.4) contrast(0.95); }
+  @media (prefers-reduced-motion: reduce) {
+    .destash.is-grey img { filter: grayscale(85%); transition: none; }
+  }
+
+  /* —— 相簿區塊 ——————————————————————————————————————— */
+  .gallery-section { padding-block: clamp(3rem, 8vh, 6rem); }
+  .gallery-section .inner { max-width: 72rem; margin-inline: auto; padding-inline: var(--gutter); }
+}
