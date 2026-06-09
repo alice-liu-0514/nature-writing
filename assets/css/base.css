@@ -83,6 +83,9 @@
   }
   .wrap-wide { max-width: var(--measure-wide); }
 
+  /* 不斷行：避免標點與單字在行尾被拆開 */
+  .nobreak { white-space: nowrap; }
+
   /* 全出血：突破版心、佔滿視窗寬 */
   .full-bleed {
     width: 100vw;

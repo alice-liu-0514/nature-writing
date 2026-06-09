@@ -104,16 +104,16 @@
 
   /* —— 引言金句 pull-quote ——————————————————————————— */
   .pullquote {
-    --pq: var(--measure-wide);
+    --pq: var(--measure);
     max-width: var(--pq);
     margin: var(--space-fig) auto;
     padding-inline: var(--gutter);
-    font-size: clamp(1.5rem, 1.1rem + 2.2vw, 2.5rem);
-    line-height: 1.5; font-weight: 700; letter-spacing: 0.02em;
+    font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.85rem);
+    line-height: 1.6; font-weight: 700; letter-spacing: 0.02em;
     color: var(--accent); text-wrap: balance;
     border: none; quotes: none;
   }
-  .pullquote::before { content: "「"; margin-left: -0.6em; color: var(--ink-faint); }
+  .pullquote::before { content: "「"; margin-left: -0.2em; color: var(--ink-faint); }
   .pullquote::after  { content: "」"; color: var(--ink-faint); }
 
   /* 結語 coda */
@@ -147,11 +147,22 @@
   figure.hero-figure { max-width: none; padding-inline: 0; margin: 0 0 clamp(2.5rem, 7vh, 5rem); }
   figure.hero-figure img { height: clamp(52vh, 64vh, 74vh); object-fit: cover; }
 
-  /* 桌機：左右偏移，突出於置中文字欄（非對稱節奏） */
+  /* 桌機：圖片左緣對齊正文起點、向右延伸（保留不對稱，但不向左突出於段落） */
   @media (min-width: 1000px) {
-    figure.offset-right, figure.offset-left { max-width: none; width: min(54rem, 88vw); padding-inline: 0; }
-    figure.offset-right { margin-left: auto; margin-right: var(--gutter); }
-    figure.offset-left  { margin-right: auto; margin-left: var(--gutter); }
+    figure.offset-right, figure.offset-left {
+      --col-left: calc((100% - var(--measure)) / 2 + var(--gutter));
+      max-width: none; padding-inline: 0;
+    }
+    /* 左偏移：左緣對齊正文起點，向右延伸 */
+    figure.offset-left {
+      width: auto; max-width: 54rem;
+      margin-left: var(--col-left); margin-right: var(--gutter);
+    }
+    /* 右偏移：靠右延伸，但左緣不會超出正文起點 */
+    figure.offset-right {
+      width: min(54rem, calc(100% - var(--col-left) - var(--gutter)));
+      margin-left: auto; margin-right: var(--gutter);
+    }
   }
 
   /* —— 相簿縮圖格 ——————————————————————————————————— */

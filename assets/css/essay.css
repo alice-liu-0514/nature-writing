@@ -33,7 +33,7 @@
     color: var(--accent); margin-bottom: 1.4rem;
   }
   .home-hero .title {
-    font-size: clamp(5rem, 6rem + 12vw, 16rem);
+    font-size: clamp(4rem, 3.4rem + 7.5vw, 10.5rem);
     font-weight: 700; line-height: 0.82; letter-spacing: 0.06em;
     margin-bottom: 1.6rem;
   }
@@ -128,8 +128,13 @@
   }
   .home-about p { margin-bottom: 1.4rem; line-height: 1.95; }
   .home-about .sign {
-    margin-top: 2rem; font-family: var(--font-serif); font-weight: 700;
-    font-size: var(--fs-h3); letter-spacing: 0.1em;
+    margin-top: 2.4rem; font-family: var(--font-serif); font-weight: 700;
+    font-size: 1.2rem; letter-spacing: 0.16em; line-height: 1.5;
+  }
+  .home-about .sign-date {
+    display: block; margin-top: 0.5rem;
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: var(--fs-meta); letter-spacing: 0.08em; color: var(--ink-soft);
   }
 
   /* ====================================================
