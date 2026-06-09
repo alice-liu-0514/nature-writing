@@ -196,8 +196,8 @@
   }
   @media (prefers-reduced-motion: reduce) { .drifter::before { animation: none; } }
 
-  /* —— 竹篇：時間跳躍的 100vh 間隔 ——————————————————————— */
-  .time-gap { height: clamp(40vh, 60vh, 70vh); }
+  /* —— 竹篇：時間跳躍的間隔（克制，避免大片空白）———————————— */
+  .time-gap { height: clamp(4rem, 12vh, 7rem); }
 
   /* 阿公記憶：回憶的聲音（略斜 + 細線） */
   .memory {

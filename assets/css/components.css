@@ -239,7 +239,8 @@
     border-top: 0.7rem solid transparent; border-bottom: 0.7rem solid transparent;
   }
   .video:hover .play span { transform: scale(1.08); }
-  .video.playing .play, .video.playing .poster { opacity: 0; pointer-events: none; }
+  .video.playing .poster { display: none; }
+  .video.playing .play { opacity: 0; pointer-events: none; }
 
   /* —— 揭露動畫（克制）———————————————————————————————— */
   /* 漸進增強：只有在 JS 啟用（html.js）時才預先隱藏，無 JS 一律可見 */
