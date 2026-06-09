@@ -1,4 +1,4 @@
-// reveal.js — 克制的滾動揭露、閱讀進度、章節導覽、颱風褪色
+// reveal.js — 克制的滾動揭露、閱讀進度、章節導覽
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // 段落揭露：只做極小位移，進入即顯示後不再觀察
@@ -53,19 +53,4 @@ export function initChapterNav() {
     }
   }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
   map.forEach((_, sec) => io.observe(sec));
-}
-
-// 颱風褪色：滾入視窗即轉灰（一次性，色彩不再回來）
-export function initDestash() {
-  const els = document.querySelectorAll('.destash');
-  if (!els.length) return;
-  const io = new IntersectionObserver((entries) => {
-    for (const en of entries) {
-      if (en.isIntersecting && en.intersectionRatio >= 0.35) {
-        en.target.classList.add('is-grey');
-        io.unobserve(en.target);
-      }
-    }
-  }, { threshold: [0, 0.35, 0.7] });
-  els.forEach(e => io.observe(e));
 }

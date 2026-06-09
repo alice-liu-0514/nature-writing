@@ -136,12 +136,6 @@
     margin: 0.8rem auto 0; max-width: var(--measure);
   }
 
-  /* 原「全出血」改為與正文同欄寬（不再左右滿版），保留較大的上下留白 */
-  figure.bleed {
-    max-width: var(--measure); width: auto; padding-inline: var(--gutter);
-    margin-block: clamp(3rem, 9vw, 6.5rem);
-  }
-
   /* hero 大圖：定高裁切（直接置於 .essay-hero 內、滿欄寬） */
   figure.hero-figure { max-width: none; padding-inline: 0; margin: 0 0 clamp(2.5rem, 7vh, 5rem); }
   figure.hero-figure img { height: clamp(52vh, 64vh, 74vh); object-fit: cover; }

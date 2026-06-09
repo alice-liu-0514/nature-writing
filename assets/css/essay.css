@@ -196,8 +196,8 @@
   }
   @media (prefers-reduced-motion: reduce) { .drifter::before { animation: none; } }
 
-  /* —— 竹篇：時間跳躍的間隔（克制，避免大片空白）———————————— */
-  .time-gap { height: clamp(4rem, 12vh, 7rem); }
+  /* —— 竹篇：時間跳躍的間隔（小幅停頓，避免大片空白）———————— */
+  .time-gap { height: clamp(2.5rem, 6vh, 4rem); }
 
   /* 阿公記憶：回憶的聲音（略斜 + 細線） */
   .memory {
@@ -207,15 +207,6 @@
     color: var(--ink);
   }
   @media (max-width: 600px) { .memory { margin-left: 0; } }
-
-  /* 颱風褪色：滾動觸發轉灰 */
-  .destash img, figure.destash img {
-    filter: saturate(1); transition: filter 1.4s var(--ease);
-  }
-  .destash.is-grey img { filter: grayscale(85%) saturate(0.4) contrast(0.95); }
-  @media (prefers-reduced-motion: reduce) {
-    .destash.is-grey img { filter: grayscale(85%); transition: none; }
-  }
 
   /* —— 相簿區塊 ——————————————————————————————————————— */
   .gallery-section { padding-block: clamp(3rem, 8vh, 6rem); }

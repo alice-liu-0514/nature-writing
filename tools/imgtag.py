@@ -49,9 +49,9 @@ if __name__ == "__main__":
         [("bamboo-25", "100vw", "", "eager", "high", "hero-figure bleed", None)],
       "── BAMBOO inline ──": [
         ("bamboo-17", "(max-width:1000px) 92vw, 58rem", "", "lazy", None, "offset-right", "從竹林下仰望交錯的竹葉"),
-        ("bamboo-10", "100vw", "", "lazy", None, "bleed destash", "颱風過後，滿地枯黃的竹葉"),
+        ("bamboo-10", "100vw", "", "lazy", None, "bleed", "颱風過後，滿地枯黃的竹葉"),
         ("bamboo-06", "(max-width:1000px) 92vw, 58rem", "", "lazy", None, "offset-left", "田的另一頭，爸爸種的年輕竹子"),
-        ("bamboo-28", "(max-width:700px) 92vw, 42rem", "", "lazy", None, "", "破土而出的竹筍，雨後春筍具象化了"),
+        ("bamboo-22", "(max-width:700px) 92vw, 42rem", "", "lazy", None, "", "竹子根部冒出的新筍，雨後春筍具象化了"),
       ],
     }
     for label, items in specs.items():
