@@ -94,11 +94,12 @@
   /* —— 章節標題 ————————————————————————————————————— */
   .section { padding-top: var(--space-section); scroll-margin-top: 5rem; }
   .section-head { margin-bottom: var(--space-para); }
+  /* 章節標示：以小短線取代數字（數字內容隱藏） */
   .section-head .kicker {
-    display: block; font-family: var(--font-sans);
-    font-size: var(--fs-meta); letter-spacing: var(--ls-label);
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 0.7rem;
+    display: block; width: 2.2rem; height: 0;
+    margin-bottom: 1rem;
+    border-top: 2px solid var(--accent);
+    font-size: 0; overflow: hidden;
   }
   .section-head h2 { font-size: var(--fs-h2); }
 
@@ -126,8 +127,8 @@
   }
 
   /* —— 圖片 figure ————————————————————————————————— */
-  /* 預設：置中、約寬欄、含 gutter */
-  figure { margin: var(--space-fig) auto; max-width: var(--measure-wide); padding-inline: var(--gutter); }
+  /* 預設：置中、與正文同欄寬、含 gutter（圖片左右對齊段落文字） */
+  figure { margin: var(--space-fig) auto; max-width: var(--measure); padding-inline: var(--gutter); }
   figure img { width: 100%; height: auto; background: var(--paper-2); }
   figcaption {
     font-family: var(--font-sans); font-size: var(--fs-caption);
@@ -135,35 +136,18 @@
     margin: 0.8rem auto 0; max-width: var(--measure);
   }
 
-  /* 全出血：佔滿區塊全寬（section 本身即滿寬，故 width:100% 即達邊到邊；
-     不用 transform，以免與 [data-reveal] 的 transform 衝突） */
+  /* 原「全出血」改為與正文同欄寬（不再左右滿版），保留較大的上下留白 */
   figure.bleed {
-    max-width: none; width: 100%; padding-inline: 0;
+    max-width: var(--measure); width: auto; padding-inline: var(--gutter);
     margin-block: clamp(3rem, 9vw, 6.5rem);
   }
-  figure.bleed figcaption { padding-inline: var(--gutter); }
 
   /* hero 大圖：定高裁切（直接置於 .essay-hero 內、滿欄寬） */
   figure.hero-figure { max-width: none; padding-inline: 0; margin: 0 0 clamp(2.5rem, 7vh, 5rem); }
   figure.hero-figure img { height: clamp(52vh, 64vh, 74vh); object-fit: cover; }
 
-  /* 桌機：圖片左緣對齊正文起點、向右延伸（保留不對稱，但不向左突出於段落） */
-  @media (min-width: 1000px) {
-    figure.offset-right, figure.offset-left {
-      --col-left: calc((100% - var(--measure)) / 2 + var(--gutter));
-      max-width: none; padding-inline: 0;
-    }
-    /* 左偏移：左緣對齊正文起點，向右延伸 */
-    figure.offset-left {
-      width: auto; max-width: 54rem;
-      margin-left: var(--col-left); margin-right: var(--gutter);
-    }
-    /* 右偏移：靠右延伸，但左緣不會超出正文起點 */
-    figure.offset-right {
-      width: min(54rem, calc(100% - var(--col-left) - var(--gutter)));
-      margin-left: auto; margin-right: var(--gutter);
-    }
-  }
+  /* offset-left / offset-right 不再外擴，沿用 figure 預設（與正文同欄寬、置中、左右對齊段落文字） */
+  figure.offset-left, figure.offset-right { max-width: var(--measure); }
 
   /* —— 相簿縮圖格 ——————————————————————————————————— */
   .gallery-head { margin-bottom: 1.6rem; }
@@ -224,7 +208,9 @@
 
   /* —— 影片：poster + 點擊播放 ——————————————————————— */
   .video {
-    position: relative; max-width: var(--measure-wide);
+    position: relative;
+    width: calc(100% - 2 * var(--gutter));
+    max-width: calc(var(--measure) - 2 * var(--gutter));
     margin: var(--space-fig) auto 0; background: #0c0c0c;
     cursor: pointer; line-height: 0; overflow: hidden;
   }
